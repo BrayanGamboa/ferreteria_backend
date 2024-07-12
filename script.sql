@@ -31,7 +31,7 @@ CREATE TABLE master.master_document_type(
 CREATE TABLE auth.auth_user(
     id INTEGER,
     role_id INTEGER NOT NULL,
-    document_type INTEGER NOT NULL,
+    document_type_id INTEGER NOT NULL,
     name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE auth.auth_user(
     info JSON NOT NULL,
     CONSTRAINT auth_user_pk PRIMARY KEY (id),
     CONSTRAINT auth_user_role_id_fk FOREIGN KEY (role_id) REFERENCES auth.auth_role (id),
-    CONSTRAINT auth_user_document_type_fk FOREIGN KEY (document_type) REFERENCES master.master_document_type (id),
+    CONSTRAINT auth_user_document_type_id_fk FOREIGN KEY (document_type_id) REFERENCES master.master_document_type (id),
     CONSTRAINT auth_user_email_uq UNIQUE (email)
 );
 CREATE TABLE mix.mix_site(
