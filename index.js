@@ -5,7 +5,6 @@ const createServer = require('./lib/infrastructure/webserver/server');
 
 // Start the server
 const start = async () => {
-
   try {
     await bootstrap.init();
 

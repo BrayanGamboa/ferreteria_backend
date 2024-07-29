@@ -1,6 +1,6 @@
 'use strict';
 module.exports = {
-    singleQuote: true,
-    trailingComma: 'all',
-    semi: true
+  singleQuote: true,
+  trailingComma: 'all',
+  semi: true
 };
