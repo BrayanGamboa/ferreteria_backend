@@ -11,10 +11,13 @@ const start = async () => {
 
     const server = await createServer();
     await server.start();
-
+    // eslint-disable-next-line no-console
     console.log('Server running at:', server.info.uri);
+    // eslint-disable-next-line
+    process.exit(1);
   } catch (err) {
-    console.log(err);
+    console.error(err);
+    // eslint-disable-next-line
     process.exit(1);
   }
 };

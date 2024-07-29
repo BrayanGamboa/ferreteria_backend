@@ -1,13 +1,11 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-
+import globals from 'globals';
+import pluginJs from '@eslint/js';
 
 export default [
   {
-    files: ["**/*.js"],
-    languageOptions:
-    {
-      sourceType: "commonjs"
+    files: ['**/*.js'],
+    languageOptions: {
+      sourceType: 'commonjs'
     }
   },
   {
@@ -18,12 +16,12 @@ export default [
   pluginJs.configs.recommended,
   {
     rules: {
-      "no-console": ["error", { "allow": ["error"] }],
-      "no-trailing-spaces": "warn",
-      "semi": "error",
-      "comma-dangle": "error",
-      "strict": "error",
-      "require-await": "error"
+      'no-console': ['error', { allow: ['error'] }],
+      'no-trailing-spaces': 'warn',
+      semi: 'error',
+      'comma-dangle': 'error',
+      strict: 'error',
+      'require-await': 'error'
     }
   }
 ];
