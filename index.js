@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 'use strict';
 
 const bootstrap = require('./lib/infrastructure/config/bootstrap');
@@ -10,13 +11,23 @@ const start = async () => {
 
     const server = await createServer();
     await server.start();
+
     // eslint-disable-next-line no-console
     console.log('Server running at:', server.info.uri);
-    // eslint-disable-next-line
-    process.exit(1);
+
+    // Manejo de señales de salida para limpiar recursos
+    const shutdown = () => {
+      server.stop({ timeout: 10000 }).then((err) => {
+        // eslint-disable-next-line no-console
+        console.log('Server stopped.');
+        process.exit(err ? 1 : 0);
+      });
+    };
+
+    process.on('SIGTERM', shutdown);
+    process.on('SIGINT', shutdown);
   } catch (err) {
-    console.error(err);
-    // eslint-disable-next-line
+    console.error('Error starting server:', err);
     process.exit(1);
   }
 };
